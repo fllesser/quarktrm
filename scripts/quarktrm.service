@@ -1,0 +1,22 @@
+[Unit]
+Description=Quark Drive Auto-Save Tool
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=nobody
+Group=nobody
+# Change these paths to match your installation
+ExecStart=/usr/local/bin/quarktrm --config /etc/quarktrm/config.json run
+WorkingDirectory=/var/lib/quarktrm
+# Restart settings
+Restart=on-failure
+RestartSec=30s
+# Security settings
+ProtectSystem=full
+PrivateTmp=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

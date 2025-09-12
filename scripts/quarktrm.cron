@@ -1,0 +1,33 @@
+# Quark Drive Auto-Save Tool (QuarkTRM) Cron Examples
+#
+# Crontab format:
+# minute hour day_of_month month day_of_week command
+#
+# Copy these examples to your crontab with: crontab -e
+
+# Run daily at 2:00 AM
+0 2 * * * /usr/local/bin/quarktrm --config /path/to/config.json run
+
+# Run specific task every day at 3:30 AM
+30 3 * * * /usr/local/bin/quarktrm --config /path/to/config.json run --task-id tv-shows
+
+# Daily sign-in to get rewards (run at 1:00 AM)
+0 1 * * * /usr/local/bin/quarktrm --config /path/to/config.json sign-in
+
+# Run only on weekdays (Monday to Friday) at 4:00 PM
+0 16 * * 1-5 /usr/local/bin/quarktrm --config /path/to/config.json run
+
+# Run twice a day (8:00 AM and 8:00 PM)
+0 8,20 * * * /usr/local/bin/quarktrm --config /path/to/config.json run
+
+# Run every 6 hours
+0 */6 * * * /usr/local/bin/quarktrm --config /path/to/config.json run
+
+# Run on weekends at 10:00 AM
+0 10 * * 0,6 /usr/local/bin/quarktrm --config /path/to/config.json run --task-id movies
+
+# Run with log output
+0 3 * * * /usr/local/bin/quarktrm --config /path/to/config.json run > /var/log/quarktrm.log 2>&1
+
+# Run with higher log level (debug) for troubleshooting
+0 4 * * * /usr/local/bin/quarktrm --log-level debug --config /path/to/config.json run > /var/log/quarktrm-debug.log 2>&1

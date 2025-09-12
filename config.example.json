@@ -1,0 +1,132 @@
+{
+  "auth": {
+    "cookie": "Q00=abc123; P01=def456; your_actual_cookie_string_here",
+    "access_token": null,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+  },
+  "tasks": [
+    {
+      "id": "tv-shows",
+      "name": "TV Shows",
+      "target_directory": "/path/to/tv/shows",
+      "create_directory": true,
+      "end_date": null,
+      "subtasks": [
+        {
+          "share_url": "https://pan.quark.cn/s/abc123456",
+          "extraction_code": "abcd",
+          "subdirectory": null,
+          "file_pattern": "$TV",
+          "rename_pattern": "{TASKNAME}.S01E$1.mp4",
+          "ignore_extension": false,
+          "run_on_days": ["Monday", "Wednesday", "Friday"],
+          "tags": {
+            "category": "animation",
+            "quality": "1080p"
+          }
+        },
+        {
+          "share_url": "https://pan.quark.cn/s/def456789",
+          "extraction_code": null,
+          "subdirectory": "Season 2",
+          "file_pattern": "^Episode(\\d+)\\.(mp4|mkv)$",
+          "rename_pattern": "Show.S02E$1.$2",
+          "ignore_extension": false,
+          "run_on_days": null
+        }
+      ],
+      "enable_notifications": true,
+      "refresh_media_library": true
+    },
+    {
+      "id": "movies",
+      "name": "Movies",
+      "target_directory": "/path/to/movies",
+      "create_directory": true,
+      "end_date": "2025-12-31T23:59:59Z",
+      "subtasks": [
+        {
+          "share_url": "https://pan.quark.cn/s/movie123",
+          "extraction_code": null,
+          "subdirectory": null,
+          "file_pattern": "$MOVIE",
+          "rename_pattern": null,
+          "ignore_extension": false,
+          "run_on_days": ["Saturday", "Sunday"]
+        }
+      ],
+      "enable_notifications": true,
+      "refresh_media_library": true
+    },
+    {
+      "id": "documents",
+      "name": "Documents",
+      "target_directory": "/path/to/documents",
+      "create_directory": true,
+      "end_date": null,
+      "subtasks": [
+        {
+          "share_url": "https://pan.quark.cn/s/docs123",
+          "extraction_code": "1234",
+          "subdirectory": "Reports",
+          "file_pattern": "$DOCUMENT",
+          "rename_pattern": "{TASKNAME}_$1",
+          "ignore_extension": false,
+          "run_on_days": ["Monday"]
+        }
+      ],
+      "enable_notifications": false,
+      "refresh_media_library": false
+    }
+  ],
+  "notification": {
+    "enabled": true,
+    "pushover": {
+      "api_token": "your_pushover_api_token",
+      "user_key": "your_pushover_user_key"
+    },
+    "telegram": {
+      "bot_token": "your_telegram_bot_token",
+      "chat_id": "your_telegram_chat_id"
+    },
+    "discord": {
+      "webhook_url": "https://discord.com/api/webhooks/your_webhook_url"
+    },
+    "webhook": {
+      "url": "https://your-server.com/webhook",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer your_api_key"
+      },
+      "body_template": "{\"title\":\"{title}\",\"message\":\"{message}\",\"timestamp\":\"{timestamp}\"}"
+    }
+  },
+  "media_library": {
+    "emby": {
+      "server_url": "http://your-emby-server:8096",
+      "api_key": "your_emby_api_key",
+      "library_ids": ["123", "456"]
+    },
+    "jellyfin": {
+      "server_url": "http://your-jellyfin-server:8096",
+      "api_key": "your_jellyfin_api_key",
+      "library_ids": ["789", "012"]
+    },
+    "plex": {
+      "server_url": "http://your-plex-server:32400",
+      "token": "your_plex_token",
+      "library_section_ids": ["1", "2"]
+    }
+  },
+  "options": {
+    "data_dir": "/path/to/data",
+    "enable_daily_signin": true,
+    "user_agent": null,
+    "max_concurrent_tasks": 2,
+    "variables": {
+      "base_path": "/media/library",
+      "quality": "1080p"
+    }
+  }
+}
